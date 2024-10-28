@@ -41,6 +41,7 @@ async function run() {
     
         console.log('pagination query', page, size);
 
+        //pagination
         const result = await productCollection.find()
         .skip(page*size)
         .limit(size)
@@ -60,6 +61,8 @@ async function run() {
       const result = await productCollection.find(query).toArray();
       res.send(result)
     })
+
+    
 
     app.get('/productCount', async(req, res) => {
         const count = await productCollection.estimatedDocumentCount();
